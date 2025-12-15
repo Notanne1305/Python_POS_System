@@ -1,14 +1,14 @@
-from products import show_products
-from functions import select_product, compute_total, generate_receipt
+"""
+POS System - Point of Sale
+Main entry point for the application
+"""
+import tkinter as tk
+from gui import POSWindow
 
-print("=== WELCOME TO PYTHON POS ===\n")
-show_products()
-product = select_product()
-if product:
-    try:
-        quantity = int(input(f"Enter quantity for {product['Product']}: "))
-    except (ValueError, KeyError):
-        print("Invalid input or product data. Exiting.")
-    else:
-        subtotal, tax, total = compute_total(product['price'], quantity)
-        generate_receipt(product, quantity, subtotal, tax, total)
+def main():
+    root = tk.Tk()
+    app = POSWindow(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
